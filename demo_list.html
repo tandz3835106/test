@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <script src="./src/react-with-addons.js"></script>
+  <script src="./src/react-dom.js"></script>
+  <script src="./src/JSXTransformer.js"></script>
+</head>
+
+<body>
+<div id="demo"></div>
+<script type="text/jsx">
+  var FirstContent=React.createClass(
+      {
+        getInitialState:function(){
+          return{mes:this.props.value}
+        },
+        render:function(){
+          return(
+              <div>
+                <h1>{this.props.name}</h1>
+              <input type="text" value={this.state.mes} onChange={this.changenn}/>
+              <input type="button" value={this.props.sendName}/>
+              <p>{this.state.mes}</p>
+              </div>
+          )
+        },
+        changenn:function(sel){
+          this.setState({
+            mes:sel.target.value
+          })
+        }
+      }
+  )
+  var obj={
+    name:"欢迎到来",
+    sendName:"搜索",
+    value:"搜索内容"
+  }
+  ReactDOM.render(
+      <FirstContent {...obj} />,
+      document.getElementById("demo"),
+      function(){
+    console.log("render完毕》》》")
+  })
+</script>
+</body>
+</html>
